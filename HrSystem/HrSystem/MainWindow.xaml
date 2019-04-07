@@ -7,6 +7,20 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        
+        <ComboBox HorizontalAlignment="Left" Margin="23,41,0,0" VerticalAlignment="Top" Width="104" Name="ShowDepartments"
+                 SelectionChanged ="ShowDepartments_SelectionChanged" Height="25"/>
+        <ListBox Margin="148,41,458,0" Name="ShowEmployees" SelectionMode="Single"
+                 SelectionChanged ="ShowEmployees_SelectionChanged"
+                 VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
+                 Height="253" Width="186"/>
+        <Label Content="Департаменты" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия, имя, департамент" HorizontalAlignment="Left" Margin="148,10,0,0" VerticalAlignment="Top"/>
+        <StackPanel HorizontalAlignment="Left" Height="419" Margin="613,0,0,0" VerticalAlignment="Top" Width="179">
+            <Button Content="Изменить"/>
+            <Button Content="Создать"/>
+        </StackPanel>
+
+
     </Grid>
 </Window>
