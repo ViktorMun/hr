@@ -20,7 +20,7 @@ namespace HrSystem
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
     /// 
-    
+
     public partial class MainWindow : Window
     {/// <summary>
      /// 1.	Создать сущности Employee и Department и заполнить списки сущностей начальными данными.
@@ -38,20 +38,21 @@ namespace HrSystem
             InitializeComponent();
             FillList();
         }
-
+        Window2 window;
+        Window3 window3;
         private void FillList()
         {//добавление департаментов
             departments.Add(it);
             departments.Add(hr);
             departments.Add(support);
             //добавление сотрудников
-            employees.Add(new Employee("Иван", "Иванов",  it));
+            employees.Add(new Employee("Иван", "Иванов", it));
             employees.Add(new Employee("Сергей", "Сергеев", it));
             employees.Add(new Employee("Дмитрий", "Дмитриев", it));
             employees.Add(new Employee("Олеся", "Олесеевна", support));
             employees.Add(new Employee("Джон", "Джоннов", support));
-            employees.Add(new Employee("Макл", "Майклов",  it));
-            employees.Add(new Employee("Руслан", "Русланов",  hr));
+            employees.Add(new Employee("Макл", "Майклов", it));
+            employees.Add(new Employee("Руслан", "Русланов", hr));
             ShowEmployees.ItemsSource = employees;
             ShowDepartments.ItemsSource = departments;
         }
@@ -64,6 +65,28 @@ namespace HrSystem
         private void ShowDepartments_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void BtnCreate_Click(object sender, RoutedEventArgs e)
+        {
+            window = new Window2();
+            window.Show();
+        }
+
+        private void BtnChange_Click(object sender, RoutedEventArgs e)
+        {
+            window3 = new Window3();
+            window.Show();
+        }
+        ///Добавление департамента
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            departments.Add(new Department(TextBox_dep.Text));
+        }
+
+        private void FamBtn_Click(object sender, RoutedEventArgs e)
+        {
+            employees.Add(new Employee(imBtn.Text, fam.Text, support ));
         }
     }
 }
