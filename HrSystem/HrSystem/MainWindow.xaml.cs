@@ -16,54 +16,18 @@ using System.Collections.ObjectModel;
 
 namespace HrSystem
 {
-    /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
-    /// </summary>
-    /// 
     
     public partial class MainWindow : Window
-    {/// <summary>
-     /// 1.	Создать сущности Employee и Department и заполнить списки сущностей начальными данными.
-     /// </summary>
-     /// создание сущностей Employees department
-
-        ObservableCollection<Employee> employees = new ObservableCollection<Employee>();
-        ObservableCollection<Department> departments = new ObservableCollection<Department>();
-
-        Department it = new Department(nameof(it));
-        Department hr = new Department(nameof(hr));
-        Department support = new Department(nameof(support));
+    {
+        //вынес логику в mainwindow.cs
         public MainWindow()
         {
             InitializeComponent();
-            FillList();
-        }
-
-        private void FillList()
-        {//добавление департаментов
-            departments.Add(it);
-            departments.Add(hr);
-            departments.Add(support);
-            //добавление сотрудников
-            employees.Add(new Employee("Иван", "Иванов",  it));
-            employees.Add(new Employee("Сергей", "Сергеев", it));
-            employees.Add(new Employee("Дмитрий", "Дмитриев", it));
-            employees.Add(new Employee("Олеся", "Олесеевна", support));
-            employees.Add(new Employee("Джон", "Джоннов", support));
-            employees.Add(new Employee("Макл", "Майклов",  it));
-            employees.Add(new Employee("Руслан", "Русланов",  hr));
-            ShowEmployees.ItemsSource = employees;
-            ShowDepartments.ItemsSource = departments;
-        }
-        ///2.	Для списка сотрудников и списка департаментов предусмотреть визуализацию (отображение). 
-        private void ShowEmployees_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
+            _FillList = new Modal();
+            DataContext = _FillList;
 
         }
 
-        private void ShowDepartments_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
-        {
-
-        }
+       
     }
 }

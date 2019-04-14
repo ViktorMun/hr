@@ -5,22 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HrSystem"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="804.839">
     <Grid>
-        <ComboBox HorizontalAlignment="Left" Margin="23,41,0,0" VerticalAlignment="Top" Width="104" Name="ShowDepartments"
-                 SelectionChanged ="ShowDepartments_SelectionChanged" Height="25"/>
-        <ListBox Margin="148,41,458,0" Name="ShowEmployees" SelectionMode="Single"
-                 SelectionChanged ="ShowEmployees_SelectionChanged"
-                 VerticalAlignment="Top"
-                 HorizontalAlignment="Center"
-                 Height="253" Width="186"/>
-        <Label Content="Департаменты" HorizontalAlignment="Left" Margin="23,10,0,0" VerticalAlignment="Top"/>
-        <Label Content="Фамилия, имя, департамент" HorizontalAlignment="Left" Margin="148,10,0,0" VerticalAlignment="Top"/>
-        <StackPanel HorizontalAlignment="Left" Height="419" Margin="613,0,0,0" VerticalAlignment="Top" Width="179">
-            <Button Content="Изменить"/>
-            <Button Content="Создать"/>
-        </StackPanel>
 
+        <ListBox Margin="192,122,403,0" Name="ShowEmployees" ItemsSource="{Binding Employees}" SelectionMode="Single"
+                               VerticalAlignment="Top"
+                 HorizontalAlignment="Center"
+                 Height="253" Width="202"/>
+        <Label Content="Департаменты" HorizontalAlignment="Left" Margin="23,97,0,0" VerticalAlignment="Top"/>
+        <Label Content="Фамилия, имя, департамент" HorizontalAlignment="Left" Margin="192,96,0,0" VerticalAlignment="Top"/>
+        <Grid HorizontalAlignment="Left" Height="56" Margin="10,10,0,0" VerticalAlignment="Top" Width="678"/>
+        <ListBox Name="ShowDepartments" ItemsSource="{Binding Departments}" SelectionChanged ="ShowDepartments_SelectionChanged" HorizontalAlignment="Left" Height="253" Margin="23,122,0,0" VerticalAlignment="Top" Width="148"/>
+        <Grid HorizontalAlignment="Left" Height="87" Margin="10,10,0,0" VerticalAlignment="Top" Width="741">
+            <Button Content="Создать департамент" x:Name="btnCreateDepartment" HorizontalAlignment="Left" Margin="176,40,0,0" VerticalAlignment="Top" Width="139" Height="25" Click="BtnCreateDep_Click" RenderTransformOrigin="-0.404,0.346"/>
+            <Button Content="Добавить сотрудника " x:Name="btnCreateEmployee" HorizontalAlignment="Left" Margin="564,110,-39,-48" VerticalAlignment="Top" Width="153" Height="25" Click="BtnCreate_Click"/>
+            <TextBox x:Name="depNew" HorizontalAlignment="Left" Height="23" Margin="29,40,0,0" TextWrapping="Wrap" Text="{Binding ElementName=ShowDepartments, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}" VerticalAlignment="Top" Width="120"/>
+
+        </Grid>
+        <TextBox x:Name="InputFam" HorizontalAlignment="Left" Height="23" Margin="429,122,0,0" TextWrapping="Wrap" Text="{Binding ElementName=ShowEmployees, Path=SelectedItem.Name, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="InputName" HorizontalAlignment="Left" Height="23" Margin="429,150,0,0" TextWrapping="Wrap"  Text="{Binding ElementName=ShowEmployees, Path=SelectedItem.LastName, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" VerticalAlignment="Top" Width="120"/>
+        <ComboBox x:Name="dep"  HorizontalAlignment="Left" Margin="429,178,0,0" VerticalAlignment="Top" Width="120"   ItemsSource="{Binding Departments}"/>
 
     </Grid>
 </Window>
